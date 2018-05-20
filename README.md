@@ -1,7 +1,5 @@
-# WareEmbedding
-Ware to vector imitating word to vector.  
-  
-  
+# Ware analysis like Words 
+Co-occurence matrix --> PPMI matrix  
 class OrderManager: query new orders   
 class WareIndex: add index to each ware, and the index of each ware is the position of the ware in cooccurance matrix.   
 class CooCcurMatix: Calculate cooccurance matrix for all wares occurs in orders.   
