@@ -48,7 +48,7 @@ class CooccurMatrix(object):
             print("ware index smaller than matrix shape !!!")
             sys.exit("ware index smaller than matrix shape !!!")
 
-        for order_parent_id, grp in tqdm.tqdm(new_order_wares.groupby(['order_parent_id'])):
+        for order_id, grp in tqdm.tqdm(new_order_wares.groupby(['order_id'])):
             comb = tuple(itertools.product(grp['index'], repeat=2))
 
             row, col = list(zip(*comb))
@@ -59,7 +59,7 @@ class CooccurMatrix(object):
         self.matrix_cooccur += self.temp_csr
 
     def cal_order_vs_ware_sparse_matrix(self, new_order_wares, ware_index):
-        new_order_wares = new_order_wares[['order_parent_id', 'ware_id', 'index']].drop_duplicates()
+        new_order_wares = new_order_wares[['order_id', 'ware_id', 'index']].drop_duplicates()
         new_order_wares['count'] = 1
         data = new_order_wares['count'].tolist()
         order_parent_id_u = list(sorted(new_order_wares.order_parent_id.unique()))
